@@ -3,27 +3,35 @@ package ru.netology.Radioman;
 public class Radio {
     private int currentStation;
     private int minStation = 0;
-    private int maxStation = 9;
+    private int numberOfStations = 10;
     private int currentVolume;
     private int minVolume = 0;
-    private int maxVolume = 10;
+    private int maxVolume = 100;
+
+    public Radio() {
+
+    }
+
+    public Radio(int numberOfStations) {
+        this.numberOfStations = numberOfStations;
+    }
 
     public int getCurrentStation() {
         return currentStation;
     }
 
-    public void setCurrentStation(int newCurrentStation) {
-        if (newCurrentStation > maxStation) {
+    public void setCurrentStation(int currentStation) {
+        if (currentStation > numberOfStations -1) {
             return;
         }
-        if (newCurrentStation < minStation) {
+        if (currentStation < minStation) {
             return;
         }
-        currentStation = newCurrentStation;
+        this.currentStation = currentStation;
     }
 
     public void next() {
-        if (currentStation < maxStation) {
+        if (currentStation < numberOfStations -1) {
             currentStation = currentStation + 1;
         } else {
             currentStation = minStation;
@@ -34,7 +42,7 @@ public class Radio {
         if (currentStation > minStation) {
             currentStation = currentStation - 1;
         } else {
-            currentStation = maxStation;
+            currentStation = numberOfStations -1;
         }
     }
 
@@ -42,14 +50,14 @@ public class Radio {
         return currentVolume;
     }
 
-    public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume > maxVolume) {
+    public void setCurrentVolume(int CurrentVolume) {
+        if (CurrentVolume > maxVolume) {
             return;
         }
-        if (newCurrentVolume < minVolume) {
+        if (CurrentVolume < minVolume) {
             return;
         }
-        currentVolume = newCurrentVolume;
+        this.currentVolume = CurrentVolume;
     }
 
     public void volumeUp() {
